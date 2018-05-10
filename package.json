@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
   "main": "dist/index.js",
+  "typings": "dist/src/index.d.ts",
   "scripts": {
     "test": "ts-node node_modules/jasmine/bin/jasmine",
     "test-js": "rm -rf build* && npm run build && cp -r spec/support dist/spec && jasmine --config=dist/spec/support/jasmine-js.json",
