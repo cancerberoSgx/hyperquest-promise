@@ -1,6 +1,6 @@
 {
   "name": "hyperquest-promise",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
