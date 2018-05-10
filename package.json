@@ -13,13 +13,11 @@
     "build-es5": "tsc --project tsconfig-es5.json",
     "doc": "typedoc -mode modules --out ../docs/typescript-ast-util src/index.ts",
     "clean": "rm -rf dist; find . -name \"node_modules\" -exec rm -rf '{}' +; find . -name \"package-lock.json\" -exec rm -rf '{}' +;",
-    "all": "npm run clean && npm i && npm test"
+    "all": "npm run clean && npm i && npm test",
+    "prepare": "npm run build"
   },
   "keywords": [
-    "TypeScript",
-    "TypeScript Language Service",
-    "plugin",
-    "extract interface"
+    "hyperquest", "request", "node and browser", "promise"
   ],
   "author": "Sebastian Gurin",
   "dependencies": {
