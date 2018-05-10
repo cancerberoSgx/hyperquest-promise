@@ -1,13 +1,14 @@
 # hyperquest-promises
 
 ## What
+
 [hyperquest](https://github.com/substack/hyperquest) returning promises
 
 For those not familiar, this is alibrary for making requests that will work both in node.js and browser thanks to browserify. 
 
-Code taken from here: https://gist.github.com/nikcorg/0999f547a32299e44fef
+Initial code taken from here: https://gist.github.com/nikcorg/0999f547a32299e44fef and ported to TypeScript node.js project
 
-(I really needed this as a node.js project.)
+(I really needed this as a node.js - TypeScript project.)
 
 ## Install
 
@@ -34,6 +35,9 @@ module.exports.getSpotifyProfile = async () => {
   const response = await get('https://api.spotify.com/v1/me/playlists', {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
   return (!response || !response.data) ? null || JSON.parse(response.data)
 }
-```js
+```
+
+## API documentation
+
 For API documentation , please go to [hyperquest](https://github.com/substack/hyperquest) or [request](https://github.com/request/request). 
 The API is the same as hyperquest with the only difference that methods will return a `Promise`
