@@ -1,4 +1,4 @@
-# typescript-plugin-extract-interface
+# hyperquest-promises
 
 ## What
 [hyperquest](https://github.com/substack/hyperquest) returning promises
@@ -27,8 +27,9 @@ module.exports.getSpotifyProfile = async () => {
 
 This project is written with typescript and supports new ecma modules so you can import modules like this : 
 TODO
+
 ```ts
-import TODO
+import { get } from 'hyperquest-promises'
 module.exports.getSpotifyProfile = async () => {
   const response = await get('https://api.spotify.com/v1/me/playlists', {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
   return (!response || !response.data) ? null || JSON.parse(response.data)

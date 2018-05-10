@@ -2,11 +2,13 @@
   "compilerOptions": {
     "target": "es2018",   
     "module": "commonjs", 
-    "lib": ["es2018"],  
+    "lib": ["es6","dom"],  
     "outDir": "./dist", 
-    "rootDir": "./src",
+    "rootDir": ".",
     "strict": true,  
     "removeComments": false,      
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true
   }
 }
