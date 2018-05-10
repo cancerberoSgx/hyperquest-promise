@@ -1,0 +1,38 @@
+{
+  "name": "hyperquest-promise",
+  "version": "0.0.1",
+  "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
+    "test-js": "node node_modules/jasmine/bin/jasmine --config=dist/spec/support/jasmine-js.json",
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "doc": "typedoc -mode modules --out ../docs/typescript-ast-util src/index.ts",
+    "clean": "find . -name \"node_modules\" -exec rm -rf '{}' +; find . -name \"package-lock.json\" -exec rm -rf '{}' +;"
+  },
+  "keywords": [
+    "TypeScript",
+    "TypeScript Language Service",
+    "plugin",
+    "extract interface"
+  ],
+  "author": "Sebastian Gurin",
+  "dependencies": {
+    "concat-stream": "^1.6.2",  
+    "hyperquest": "^2.1.3"
+  },
+  "license": 'MIT',
+  "devDependencies": {
+    "@types/concat-stream": "^1.6.0",
+    "@types/jasmine": "^2.8.7",
+    "@types/jasmine-ajax": "^3.1.37",
+    "@types/node": "^10.0.6",
+    "jasmine": "^3.1.0",
+    "jasmine-ajax": "^3.3.1",
+    "ts-node": "^6.0.3",
+    "typescript": "^2.8.3"
+  },
+  "repository": "https://github.com/cancerberoSgx/hyperquest-promise",
+  "readme": "README.md"
+}
