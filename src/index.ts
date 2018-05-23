@@ -23,7 +23,7 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
 
     // Send the payload down the wire, if present and applicable
 
-    if (payload && req.writable && payload instanceof Readable) {
+    if (payload && req.writable && (payload instanceof Readable || payload.on)) {
       payload.pipe(req)
     } else if (payload && req.writable) {
       if (typeof payload != 'string') {
