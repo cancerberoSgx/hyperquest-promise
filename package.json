@@ -1,6 +1,6 @@
 {
   "name": "hyperquest-promise",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
@@ -17,7 +17,10 @@
     "prepare": "npm run build"
   },
   "keywords": [
-    "hyperquest", "request", "node and browser", "promise"
+    "hyperquest",
+    "request",
+    "node and browser",
+    "promise"
   ],
   "author": "Sebastian Gurin",
   "dependencies": {
