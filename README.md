@@ -1,6 +1,8 @@
-# hyperquest-promises
+[![Build Status](https://travis-ci.org/cancerberoSgx/hyperquest-promise.png?branch=master)](https://travis-ci.org/cancerberoSgx/hyperquest-promise)
+[![Dependencies](https://david-dm.org/cancerberosgx/hyperquest-promise.svg)](https://david-dm.org/cancerberosgx/hyperquest-promise)
 
-## What
+
+# Hyperquest returning Promises
 
 [hyperquest](https://github.com/substack/hyperquest) returning promises
 

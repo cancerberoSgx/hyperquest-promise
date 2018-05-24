@@ -38,6 +38,5 @@
     "ts-node": "^6.0.3",
     "typescript": "^2.8.3"
   },
-  "repository": "https://github.com/cancerberoSgx/hyperquest-promise",
-  "readme": "README.md"
+  "repository": "https://github.com/cancerberoSgx/hyperquest-promise"
 }

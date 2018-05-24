@@ -5,5 +5,6 @@
 # 0.0.3
 
   * less restrictive filtering Readable-like objects
+  * travis
 
 # 0.0.4
