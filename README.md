@@ -6,11 +6,9 @@
 
 [hyperquest](https://github.com/substack/hyperquest) returning promises
 
-For those not familiar, this is alibrary for making requests that will work both in node.js and browser thanks to browserify. 
+Same API, same code, both in browser and node.js.
 
-Initial code taken from here: https://gist.github.com/nikcorg/0999f547a32299e44fef and ported to TypeScript node.js project
-
-(I really needed this as a node.js - TypeScript project.)
+For those not familiar, this is library for making requests that will work both in node.js and browser thanks to browserify or similar bundler. 
 
 ## Install
 
@@ -20,21 +18,11 @@ Initial code taken from here: https://gist.github.com/nikcorg/0999f547a32299e44f
 
 GET Spotify user's profile (using async/await - that's the beauty of promises) 
 
-```js
-const get = require('hyperquest-promises').get
-module.exports.getSpotifyProfile = async () => {
-  const response = await get('https://api.spotify.com/v1/me/playlists', {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
-  return (!response || !response.data) ? null || JSON.parse(response.data)
-}
-```
-
-This project is written with typescript and supports new ecma modules so you can import modules like this : 
-TODO
-
 ```ts
-import { get } from 'hyperquest-promises'
-module.exports.getSpotifyProfile = async () => {
-  const response = await get('https://api.spotify.com/v1/me/playlists', {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
+import { get } from 'hyperquest-promise'
+export function getSpotifyProfile = async () => {
+  const response = await get('https://api.spotify.com/v1/me/playlists', 
+    {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
   return (!response || !response.data) ? null || JSON.parse(response.data)
 }
 ```

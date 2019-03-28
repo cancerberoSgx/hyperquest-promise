@@ -6,7 +6,7 @@ import { Readable } from 'stream'
 // Wait for the request to finish or fail
 
 function promisify(req: any) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     req.on('error', reject).pipe(concat({ encoding: 'string' }, resolve))
   })
 }
@@ -18,7 +18,7 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
   options.method = method
   options.headers = options.headers || {}
 
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     var req = hyperquest(url, options)
 
     // Send the payload down the wire, if present and applicable
@@ -30,7 +30,7 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
         req.end()
         return reject(new Error('Payload must be a stream or a string'))
       }
-      ((options as Options).headers as Headers)['content-length'] = Buffer.byteLength(payload, 'utf-8') || 0
+      ;((options as Options).headers as Headers)['content-length'] = Buffer.byteLength(payload, 'utf-8') || 0
       req.write(payload)
     } else if (req.writable) {
       req.write(null)
@@ -38,8 +38,8 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
 
     // Wrap the response and error in a blanket of information
 
-    promisify(req).
-      then(function (data) {
+    promisify(req).then(
+      function(data) {
         resolve({
           data: data,
           error: null,
@@ -47,7 +47,8 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
           request: req.request,
           response: req.response
         } as any)
-      }, function (err) {
+      },
+      function(err) {
         reject({
           data: null,
           error: err,
@@ -55,15 +56,16 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
           request: req.request,
           response: req.response
         })
-      }) as any
+      }
+    ) as any
   })
 }
 
 export interface PromiseResolveType {
-  data: string,
-  error: any,
-  options: Options,
-  request: ClientRequest,
+  data: string
+  error: any
+  options: Options
+  request: ClientRequest
   response: ClientResponse
 }
 export interface Headers {
@@ -88,21 +90,21 @@ export interface Options {
   rejectUnauthorized?: any
   secureProtocol?: any
 }
-export const get = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const get = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('get', url, options, payload)
 }
-export const put = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const put = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('put', url, options, payload)
 }
-export const post = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const post = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('post', url, options, payload)
 }
-export const delete_ = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const delete_ = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('delete', url, options, payload)
 }
-export const patch = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const patch = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('patch', url, options, payload)
 }
-export const head = function (url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
+export const head = function(url?: string, options?: Options, payload?: any): Promise<PromiseResolveType> {
   return send('head', url, options, payload)
 }

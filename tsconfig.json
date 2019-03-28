@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2018",   
+    "target": "es5",   
     "module": "commonjs", 
-    "lib": ["es6","dom"],  
+    "lib": ["esnext","dom"],  
     "outDir": "./dist", 
     "rootDir": ".",
     "strict": true,  
-    "removeComments": false,      
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": true
