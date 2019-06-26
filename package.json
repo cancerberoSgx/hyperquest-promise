@@ -7,6 +7,8 @@
   "scripts": {
     "test": "ts-node node_modules/jasmine/bin/jasmine",
     "test-js": "rm -rf build* && npm run build && cp -r spec/support dist/spec && jasmine --config=dist/spec/support/jasmine-js.json",
+    "test-js-debug": "rm -rf build* && npm run build && cp -r spec/support dist/spec && node --inspect-brk node_modules/jasmine/bin/jasmine --config=dist/spec/support/jasmine-js.json",
+
     "watch": "tsc --watch",
     "build": "tsc",
     "prettier": " npx prettier  --write --arrow-parens avoid --parser typescript --use-tabs false --no-semi true --single-quote true --tab-width 2 --trailing-comma none --end-of-line lf --prose-wrap preserve --print-width 120 --jsx-bracket-same-line true \"src/**/*.ts*\"",

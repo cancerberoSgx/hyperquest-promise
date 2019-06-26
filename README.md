@@ -16,19 +16,20 @@ For those not familiar, this is library for making requests that will work both 
 
 ## Usage
 
-GET Spotify user's profile (using async/await - that's the beauty of promises) 
+Use async/await for shorter syntax. Resolves with a Request object and request.data is a Buffer. By default encodes text as binary.
 
 ```ts
 import { get } from 'hyperquest-promise'
 
 (async () => {
-  const {html} = await get('https://cancerberosgx.github.io/demos/index.html')
+  const {buffer} = await get('https://foo.com/f/bar.jpg')
+  writeFileSync('bar.jpg', buffer)
 })();
 
 export async function getSpotifyProfile() {
   const response = await get('https://api.spotify.com/v1/me/playlists', 
     {headers: {Authorization: `Bearer ${THE_TOKEN}`}})
-  return (!response || !response.data) ? null || JSON.parse(response.data)
+  return (!response || !response.data) ? null || JSON.parse(response.data.toString())
 }
 ```
 
@@ -36,4 +37,26 @@ export async function getSpotifyProfile() {
 
 For API documentation , please go to [hyperquest](https://github.com/substack/hyperquest) or [request](https://github.com/request/request). 
 
-The API is the same as hyperquest with the only difference that methods will return a `Promise`
+The API is the same as hyperquest with the only difference that methods will return a `Promise`.
+
+### Options signature
+
+ * `url?: string`:
+ * `scheme?: string`:
+ * `method?: string`:
+ * `host?: string`:
+ * `port?: string`:
+ * `encoding?: string`:
+ * `path?: string`:
+ * `agent?: string | false`:
+ * `headers?: Headers`:
+ * `withCredentials?: any`:
+ * `localAddress?: any`:
+ * `pfx?: any`:
+ * `key?: any`:
+ * `cert?: any`:
+ * `ca?: any`:
+ * `ciphers?: any`:
+ * `rejectUnauthorized?: any`:
+ * `secureProtocol?: any`:
+ 

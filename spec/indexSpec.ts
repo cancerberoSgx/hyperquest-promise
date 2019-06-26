@@ -1,4 +1,5 @@
 import { get } from '../src'
+import { writeFileSync, readFileSync } from 'fs';
 
 describe('hyperquest-promise', () => {
 
@@ -15,16 +16,16 @@ describe('hyperquest-promise', () => {
     server.get('/url1', (req: any, res: any) => {
       res.send(JSON.stringify({ prop: 123 }))
     })
-
     server.listen(8081, () => {
       console.log(`Server listening at http://localhost:8081/`)
-      const response = get('http://localhost:8081/url1', { headers: { Auth: '' } })
+      get('http://localhost:8081/url1', { headers: { Auth: '' } })
         .then(response => {
-          expect(JSON.parse(response.data).prop).toBe(123)
+          expect(JSON.parse(response.data.toString()).prop).toBe(123)
           done()
         })
         .catch(err => {
-          server.close(); fail(err)
+          server.close(); 
+          fail(err)
         })
     })
   })
@@ -32,7 +33,14 @@ describe('hyperquest-promise', () => {
   it('real http address', async done=>{
     const url = 'https://cancerberosgx.github.io/demos/index.html'
     const {data} = await get(url)
-    expect(data).toContain('<html>')
+    expect(data.toString()).toContain('<html>')
+    done()
+  })
+
+  it('binary', async done=>{
+    const url = 'https://cancerberosgx.github.io/demos/WASM-ImageMagick/supported-formats/formats/to_rotate.jpg'
+    const r = await get(url)
+    expect(r.data.toString('base64')).toEqual(readFileSync('spec/assets/to_rotate.jpg').toString('base64'))
     done()
   })
 })

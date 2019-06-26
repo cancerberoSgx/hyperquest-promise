@@ -5,9 +5,9 @@ import { Readable } from 'stream'
 
 // Wait for the request to finish or fail
 
-function promisify(req: any) {
+function promisify(req: any, encoding = 'binary') {
   return new Promise(function(resolve, reject) {
-    req.on('error', reject).pipe(concat({ encoding: 'string' }, resolve))
+    req.on('error', reject).pipe(concat({ encoding }, resolve))
   })
 }
 
@@ -30,7 +30,7 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
         req.end()
         return reject(new Error('Payload must be a stream or a string'))
       }
-      ;((options as Options).headers as Headers)['content-length'] = Buffer.byteLength(payload, 'utf-8') || 0
+      ;((options as Options).headers as Headers)['content-length'] = Buffer.byteLength(payload, 'binary') || 0
       req.write(payload)
     } else if (req.writable) {
       req.write(null)
@@ -38,10 +38,10 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
 
     // Wrap the response and error in a blanket of information
 
-    promisify(req).then(
+    promisify(req, options ? options.encoding : undefined).then(
       function(data) {
         resolve({
-          data: data,
+          data: Array.isArray(data) && data.length === 1 ? data[0] : data,
           error: null,
           options: options,
           request: req.request,
@@ -62,7 +62,7 @@ function send(method: any, url?: any, options?: Options, payload?: any): Promise
 }
 
 export interface PromiseResolveType {
-  data: string
+  data: Buffer
   error: any
   options: Options
   request: ClientRequest
@@ -77,6 +77,7 @@ export interface Options {
   method?: string
   host?: string
   port?: string
+  encoding?: string
   path?: string
   agent?: string | false
   headers?: Headers
