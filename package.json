@@ -1,7 +1,7 @@
 {
   "name": "hyperquest-promise",
-  "version": "0.0.6",
-  "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
+  "version": "0.1.0",
+  "description": "[hyperquest](https://github.com/substack/hyperquest) promise support. Node.js and browser compatible http request API",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "scripts": {
@@ -20,7 +20,11 @@
     "hyperquest",
     "request",
     "node and browser",
-    "promise"
+    "promise",
+    "http",
+    "Node.js",
+    "node",
+    "browser"
   ],
   "author": "Sebastian Gurin",
   "dependencies": {

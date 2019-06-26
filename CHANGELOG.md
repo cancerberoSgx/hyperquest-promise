@@ -7,4 +7,8 @@
   * less restrictive filtering Readable-like objects
   * travis
 
-# 0.0.4
+# 0.1.0
+
+ * default encoding is binary so supports images, etc out of the box
+ * response.data is now a buffer
+ * dependencies updated
