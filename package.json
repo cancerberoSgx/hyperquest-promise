@@ -1,6 +1,6 @@
 {
   "name": "hyperquest-promise",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "[hyperquest](https://github.com/substack/hyperquest) returning promises",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
@@ -14,7 +14,6 @@
     "all": "npm run clean && npm run prettier && npm run build && npm test && npm run test-js",
     "prepare": "npm run clean && npm run build",
     "all-publish": "npm run all && git commit -a -m \"version patch\" && npm version patch && npm publish"
-
   },
   "keywords": [
     "hyperquest",
