@@ -1,5 +1,5 @@
 import concat from 'concat-stream'
-import { ClientRequest, ClientResponse } from 'http'
+import { ClientRequest, ServerResponse } from 'http'
 const hyperquest = require('hyperquest')
 import { Readable } from 'stream'
 
@@ -66,7 +66,7 @@ export interface PromiseResolveType {
   error: any
   options: Options
   request: ClientRequest
-  response: ClientResponse
+  response: ServerResponse
 }
 export interface Headers {
   [key: string]: any
